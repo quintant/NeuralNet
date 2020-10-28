@@ -20,8 +20,9 @@ hiddenLayer = nodes.Layer(3, inLayer)
 outLayer = nodes.Layer(1, hiddenLayer)
 
 
-for i in range(5):
-    inp = float(input("::-> "))
+for i in range(1,3):
+    print(f"::-> {i}")
+    inp = float(i)
     inLayer.newVal([inp])
     hiddenLayer.calcL()
     outLayer.calcL()
