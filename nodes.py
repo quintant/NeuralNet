@@ -74,7 +74,9 @@ class inLayer():
         for node in self.NodeList:
             node.calc()
 
-
+    def newVal(self, values: list):
+        for node, nval in zip(self.NodeList, values):
+            node.updateValue(nval)
     
     def listNodes(self) -> Node:
         """
