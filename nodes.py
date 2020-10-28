@@ -1,3 +1,13 @@
+class inNode():
+    def __init__(self, value: float) -> None:
+        self.value = value
+
+    def Value(self):
+        return self.value
+
+    def updateValue(self, val:float):
+        self.value = val
+
 class Node():
     """
     Node, should:
@@ -7,14 +17,13 @@ class Node():
     import random
     def __init__(self, inboundNodes: list) -> None:
         self.inboundNodes = inboundNodes
-        self.inboundNodesWeight = [Node.random.Random() for x in inboundNodes]
+        self.inboundNodesWeight = [Node.random.random() for x in inboundNodes]
         self.value = 0.0
 
-    def wheight(self):
-        """
-        returns the node whight
-        """
-        return self.wheight
+
+    def updateNodeWheight(self, val: float, index: int):
+        self.inboundNodesWeight[index] = float
+
     
     def calc(self):
         """
@@ -22,24 +31,56 @@ class Node():
         """
         self.value = 0.0
         for node, wheight in zip(self.inboundNodes, self.inboundNodesWeight):
-            self.value += node*wheight
+            self.value += node.value *wheight
+
 
 
 class Layer():
     """
     > hold a list of all nodes in layer
     """
-    def __init__(self) -> None:
+    def __init__(self, count: int, prevLayer: "Layer") -> None:
         self.NodeList = []
+        for _ in range(count):
+            node = Node(prevLayer.listNodes())
+            self.NodeList.append(node)
     
-    def addNode(self, node: Node):
-        """
-        add node to list
-        """
-        self.NodeList.append(node)
+    def calcL(self):
+        for node in self.NodeList:
+            node.calc()
+
+
     
-    def listNodes(self):
+    def listNodes(self) -> Node:
         """
         returns a list with all the node is the layer
         """
         return self.NodeList
+
+    def listValues(self):
+        return [node.value for node in self.NodeList]
+
+class inLayer():
+    """
+    > hold a list of all nodes in layer
+    """
+    def __init__(self, count: int) -> None:
+        self.NodeList = []
+        for _ in range(count):
+            node = inNode(1.0)
+            self.NodeList.append(node)
+    
+    def calcL(self):
+        for node in self.NodeList:
+            node.calc()
+
+
+    
+    def listNodes(self) -> Node:
+        """
+        returns a list with all the node is the layer
+        """
+        return self.NodeList
+
+    def listValues(self):
+        return [node.Value() for node in self.NodeList]
