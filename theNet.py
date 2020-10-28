@@ -23,4 +23,4 @@ outLayer = nodes.Layer(1, hiddenLayer)
 
 hiddenLayer.calcL()
 outLayer.calcL()
-outLayer.listValues()
+print(outLayer.listValues())
