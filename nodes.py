@@ -17,7 +17,7 @@ class Node():
     import random
     def __init__(self, inboundNodes: list) -> None:
         self.inboundNodes = inboundNodes
-        self.inboundNodesWeight = [Node.random.random() for x in inboundNodes]
+        self.inboundNodesWeight = [Node.random.uniform(-1, 1) for x in inboundNodes]
         self.value = 0.0
 
 
